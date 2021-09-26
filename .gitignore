@@ -9,6 +9,8 @@
 /httpRequests/
 
 #backend
+/backend/db/
+/backend/.mvn/
 /backend/target/
 /backend/pom.xml.tag
 /backend/pom.xml.releaseBackup
