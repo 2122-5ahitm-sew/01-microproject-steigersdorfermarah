@@ -1,0 +1,85 @@
+.idea/
+.DS_Store/
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+#backend
+/backend/target/
+/backend/pom.xml.tag
+/backend/pom.xml.releaseBackup
+/backend/pom.xml.versionsBackup
+/backend/release.properties
+
+# Eclipse
+/backend/.project
+/backend/.classpath
+/backend/.settings/
+/backend/bin/
+
+# IntelliJ
+/backend/.idea
+/backend/*.ipr
+/backend/*.iml
+/backend/*.iws
+
+
+
+# OSX
+/backend/.DS_Store
+
+# Vim
+/backend/*.swp
+/backend/*.swo
+
+# patch
+/backend/*.orig
+/backend/*.rej
+
+# Local environment
+/backend/.env
+
+
+
+# frontend
+/frontend/dist
+frontend/tmp
+/frontend/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/frontend/node_modules
+
+# profiling files
+/frontend/chrome-profiler-events*.json
+/frontend/speed-measure-plugin*.json
+
+# IDEs and editors
+/frontend/.idea
+/frontend/.project
+/frontend/.classpath
+/frontend/.c9/
+/frontend/*.launch
+/frontend/.settings/
+*.sublime-workspace
+
+
+# misc
+/frontend/.sass-cache
+/frontend/connect.lock
+/frontend/coverage
+/frontend/libpeerconnection.log
+/frontend/npm-debug.log
+/frontend/yarn-error.log
+/frontend/testem.log
+/frontend/typings
+
+# System Files
+/frontend/.DS_Store
+/frontend/Thumbs.db
+

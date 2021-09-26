@@ -1,0 +1,19 @@
+= Steigersdorfer - Microproject
+17SM
+1.0.0, 2021-09-26: Some notes
+ifndef::imagesdir[:imagesdir: images]
+//:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
+:sourcedir: ../src/main/java
+:icons: font
+:sectnums:    // Nummerierung der Überschriften / section numbering
+:toc: left
+
+
+## Idee von meinem Microprojekt
+In einem Friseurladen gibt es Friseure und Kunden, welche angelegt und gelöscht werden können.
+Ebenso gibt es Termine, welche man erstellen und löschen kann.
+
+Auch kann man einem Kunden einen Friseur zuweisen.
+
+Somit kann man sich ansehen, welche Termine und so auch welche Kunden ein Friseur an einem bestimmten Tag hat.
+
