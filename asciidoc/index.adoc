@@ -8,6 +8,12 @@ ifndef::imagesdir[:imagesdir: images]
 :sectnums:    // Nummerierung der Überschriften / section numbering
 :toc: left
 
+## CLD
+
+[plantuml,cld,png,align=left]
+----
+include::plantuml/cld.puml[]
+----
 
 ## Idee von meinem Microprojekt
 In einem Friseurladen gibt es Friseure und Kunden, welche angelegt und gelöscht werden können.
