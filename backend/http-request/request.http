@@ -1,0 +1,39 @@
+GET http://localhost:8080/haidresser
+
+###
+
+GET http://localhost:8080/haidresser/1
+
+###
+
+
+POST http://localhost:8080/haidresser/name
+Content-Type: application/json
+
+{
+  "firstName": "Helmuth",
+  "lastName": "Gruber"
+}
+
+
+###
+
+
+POST http://localhost:8080/customer/name
+Content-Type: application/json
+
+{
+  "firstName": "Michi",
+  "lastName": "Rot"
+}
+
+
+###
+
+
+GET http://localhost:8080/customer
+
+
+###
+
+GET http://localhost:8080/customer/3
