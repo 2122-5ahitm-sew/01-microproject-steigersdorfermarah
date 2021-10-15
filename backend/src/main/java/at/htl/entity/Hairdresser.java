@@ -1,5 +1,6 @@
 package at.htl.entity;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class Hairdresser extends Person {
     private Long id;
 
     @Column(name = "salary")
+    @JsonbProperty("salary")
     private int salary;
 
     @OneToMany(mappedBy = "hairdresser",cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
