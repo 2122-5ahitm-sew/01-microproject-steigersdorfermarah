@@ -2,6 +2,7 @@ package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.*;
 
 @Entity
@@ -15,13 +16,16 @@ public class Appointment extends PanacheEntity {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "customer_id")
+    @JsonbProperty("customer")
     private Customer customer;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "hairdresser_id")
+    @JsonbProperty("hairdresser")
     private Hairdresser hairdresser;
 
     @Column(name = "date")
+    @JsonbProperty("appointment_date")
     private String date;
 
 
