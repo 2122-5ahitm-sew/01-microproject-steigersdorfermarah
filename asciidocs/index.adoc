@@ -1,6 +1,6 @@
 = Steigersdorfer - Microproject
 17SM
-1.0.0, 2021-09-26: Some notes
+4.0.0, 2022-02-08: Some notes
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
 :sourcedir: ../src/main/java
@@ -23,3 +23,57 @@ Auch kann man einem Kunden einen Friseur zuweisen.
 
 Somit kann man sich ansehen, welche Termine und so auch welche Kunden ein Friseur an einem bestimmten Tag hat.
 
+## Qute
+
+Mittels Qute wurde eine kleine HTML Seite erstellt, welche die Friseure und Termine der Woche auflistet.
+
+image::qute.png[]
+
+
+## Keycloak
+Um Keycloak verwenden zu können, muss als erstes 'keycloak-up.sh' ausgeführt werden.
+Danach wird http://localhost:8180/ aufgerufen. Unter 'Administration Console' kann man sich anmelden mit:
+----
+username: admin
+password: passme
+----
+
+Danach über Master hovern und auf 'add realm' klicken. Nun muss man einen Namen vergeben (z.B.: quarkus)
+
+Als nächstes erstellt man unter 'Clients' einen neuen.
+Hier werden folgende Einstellungen getroffen:
+----
+- name: my-quarkus-service
+- client-protocol: open-id-connect
+- access-type: confidential
+- Valid Redirect URIs: http://localhost:8080/*
+----
+
+Unter credentials Secret kopieren und im requests.http ersetzen
+
+Als nächsten Schritt fügt man unter Roles 2 neue Rollen hinzu:
+----
+- admin
+- user
+----
+
+Und anschließend noch 2 User unter Users hinzufügen:
+----
+admin
+- username: admin
+- unter credentials -> password: passme, temporary: off
+- unter rolemapping -> user und admin hinzufügen
+----
+
+----
+user
+- username: user
+- unter credentials -> password: passme, temporary: off
+- unter rolemapping -> user hinzufügen
+----
+
+## Starten des Projektes
+
+- 'create-derby.sh' ausführen
+- 'start-derby.sh' ausführen
+- ./mvnw clean compile quarkus:dev
