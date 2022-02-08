@@ -1,0 +1,45 @@
+@startuml
+
+class Hairdresser extends Person{
+  -salary: int
+  -appointments: List<Termin>
+  +Hairdresser(String firstName, String lastName)
+  +int getSalary()
+  +void setSalary()
+  +List<Appointment> getAppointments()
+  +void addAppointment(String date, Customer customer)
+
+}
+
+class Customer extends Person{
+  -mobileNr: String
+  +String getMobileNr()
+  +void setMobileNr(String mobileNr)
+  +List<Appointment> getAppointments()
+}
+
+class Person {
+  -firstName: String
+  -lastName: String
+  +String getFirstName()
+  +void setFirstName(String firstName)
+  +String getLastName()
+  +void setLastName(String lastName)
+
+}
+
+class Appointment {
+  -customer: Customer
+  -date: String
+  +Appointment(Kunde kunde, String date)
+  +Customer getCustomer()
+  +void setCustomer(Customer customer)
+  +String getDate()
+  +void setDate(String date)
+}
+
+Hairdresser "1" -right- "0...*" Customer : looks after >
+Customer "1" --- "1...*" Appointment : books >
+
+
+@enduml
