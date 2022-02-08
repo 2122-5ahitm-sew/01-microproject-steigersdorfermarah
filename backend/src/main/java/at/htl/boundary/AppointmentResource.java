@@ -2,13 +2,13 @@ package at.htl.boundary;
 
 import at.htl.control.AppointmentRepository;
 import at.htl.entity.Appointment;
+import at.htl.entity.Customer;
+import io.quarkus.security.identity.SecurityIdentity;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -16,26 +16,44 @@ import java.util.List;
 @Path("/appointment")
 public class AppointmentResource {
 
+
+    @Inject
+    SecurityIdentity securityIdentity;
+
     @Inject
     AppointmentRepository appointmentRepository;
 
+
     @GET
+    @RolesAllowed("user")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Appointment> appointments() {
         return appointmentRepository.listAll();
     }
 
+    @POST
+    @RolesAllowed("admin")
+    @Path("add_appointment")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addAppointment(Appointment newAppointment){
+        appointmentRepository.save(newAppointment);
+    }
+
     @GET
-    @Path("/{id}")
+    @Path("{id}")
+    @RolesAllowed("user")
     @Produces(MediaType.APPLICATION_JSON)
     public Appointment getAppointment(@PathParam("id") long id) {
         return appointmentRepository.findById(id);
     }
 
     @GET
-    @Path("/all")
+    @Path("all")
+    @RolesAllowed("user")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Appointment> appointmentList (){
         return appointmentRepository.findAllAppointments();
     }
+
+
 }

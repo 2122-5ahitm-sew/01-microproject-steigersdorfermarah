@@ -15,10 +15,6 @@ public class HairdresserRepository implements PanacheRepository<Hairdresser> {
         return getEntityManager().merge(hairdresser);
     }
 
-    public Hairdresser findByName(String firstName, String lastName){
-        return find("name", firstName, lastName).firstResult();
-    }
-
     public List<Hairdresser> findAllHairdresser(){
         var query = getEntityManager().createQuery("Select h from Hairdresser h", Hairdresser.class);
         return query.getResultList();

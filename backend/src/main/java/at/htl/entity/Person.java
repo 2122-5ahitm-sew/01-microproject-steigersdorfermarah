@@ -1,24 +1,19 @@
 package at.htl.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
-import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Person extends PanacheEntity {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "firstname")
-    @JsonbProperty("first_name")
     private String firstName;
 
     @Column(name = "lastname")
-    @JsonbProperty("last_name")
     private String lastName;
 
     public Person() {

@@ -1,6 +1,7 @@
 package at.htl.entity;
 
-import javax.json.bind.annotation.JsonbProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,9 @@ public class Hairdresser extends Person {
     private Long id;
 
     @Column(name = "salary")
-    @JsonbProperty("salary")
     private int salary;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "hairdresser",cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Appointment> appointments = new ArrayList<>();
 
@@ -28,6 +29,7 @@ public class Hairdresser extends Person {
         super(firstName, lastName);
         this.salary = salary;
     }
+
 
     public Hairdresser(String firstName, String lastName) {
         super(firstName, lastName);

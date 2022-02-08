@@ -1,7 +1,8 @@
 package at.htl.entity;
 
 
-import javax.json.bind.annotation.JsonbProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,11 @@ public class Customer extends Person {
     @Column(name = "id")
     private Long id;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer",cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Appointment> appointments = new ArrayList<>();
 
     @Column(name = "mobilenr")
-    @JsonbProperty("mobile_nr")
     private String mobileNr;
 
     public Customer() {

@@ -1,25 +1,51 @@
+### Authentification for user
+
+POST http://localhost:8180/auth/realms/quarkus/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_secret=bd72970b-7669-40cf-a220-8548e4d44683&client_id=my-quarkus-service&username=john&password=passme&grant_type=password
+
+> {%  client.global.set("access_token", response.body.access_token); %}
+
+
+### Authentification for admin
+
+POST http://localhost:8180/auth/realms/quarkus/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_secret=bd72970b-7669-40cf-a220-8548e4d44683&client_id=my-quarkus-service&username=admin&password=passme&grant_type=password
+
+> {%  client.global.set("access_token", response.body.access_token); %}
+
+###
+
 GET http://localhost:8080/haidresser
+Authorization: Bearer {{access_token}}
 
 ###
 
 GET http://localhost:8080/haidresser/1
+Authorization: Bearer {{access_token}}
 
 ###
 
 
-POST http://localhost:8080/haidresser/name
+POST http://localhost:8080/haidresser/add_hairdresser
+Authorization: Bearer {{access_token}}
 Content-Type: application/json
 
 {
-  "firstName": "Helmuth",
-  "lastName": "Gruber"
+  "firstName": "Sabine",
+  "lastName": "Hauser",
+  "salary": 1300
 }
 
 
 ###
 
 
-POST http://localhost:8080/customer/name
+POST http://localhost:8080/customer/add_customer
+Authorization: Bearer {{access_token}}
 Content-Type: application/json
 
 {
@@ -32,8 +58,36 @@ Content-Type: application/json
 
 
 GET http://localhost:8080/customer
+Authorization: Bearer {{access_token}}
 
 
 ###
 
 GET http://localhost:8080/customer/3
+Authorization: Bearer {{access_token}}
+
+
+###
+
+GET http://localhost:8080/appointment
+Authorization: Bearer {{access_token}}
+
+###
+
+POST http://localhost:8080/appointment/add_appointment
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "customer": {
+    "firstName": "Marie",
+    "lastName": "Haderer",
+    "mobileNr": "06643826478"
+  },
+  "hairdresser": {
+    "firstName": "Michi",
+    "lastName": "Rot"
+  },
+  "date": "10.02.22"
+}
+

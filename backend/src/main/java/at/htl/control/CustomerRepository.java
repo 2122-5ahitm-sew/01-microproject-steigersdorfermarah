@@ -15,10 +15,6 @@ public class CustomerRepository implements PanacheRepository<Customer> {
         return getEntityManager().merge(customer);
     }
 
-    public Customer findByName(String firstName, String lastName){
-        return find("name", firstName, lastName).firstResult();
-    }
-
     public Customer findById(long id){
         return find("id", id).firstResult();
     }

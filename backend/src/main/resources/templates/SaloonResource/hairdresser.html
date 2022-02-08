@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hairdressers</title>
+</head>
+<style>
+    body{
+        font-family: Arial,monospace;
+        text-align: justify-all;
+    }
+
+    #eins {
+        color: mediumpurple;
+    }
+
+    article{
+        text-align: center;
+        background-color: gainsboro;
+        padding: 1%;
+    }
+
+    table{
+        width: 100%;
+        border: grey solid 2px;
+        text-align: center;
+    }
+    #box1{
+        padding:5%;
+        text-align: justify;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #box2{
+        width: 50%;
+        float: left;
+        padding: 5%;
+        margin-left: 5%;
+    }
+
+</style>
+<body>
+    <article>
+        <h1><span id="eins">Marahs</span> Friseurladen</h1>
+    </article>
+
+    <div id="box1">
+        <h2>Unser Team:</h2>
+        {#for hairdresser in hairdressers}
+            <h4><span style="color: plum">{hairdresser.firstName} {hairdresser.lastName}</span></h4>
+        {/for}
+    </div>
+    <div id="box2">
+        <h2>Appointments diese Woche</h2>
+        <table>
+            <tbody>
+                {#for appointment in appointments}
+                    <tr>
+                        <td>{appointment.date}<td>
+                        <td>{appointment.customer.firstName} {appointment.customer.lastName} bei <span style="color: plum">{appointment.hairdresser.firstName}</span></td>
+                    <tr>
+                {/for}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
